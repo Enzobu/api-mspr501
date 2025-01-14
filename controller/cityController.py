@@ -59,6 +59,7 @@ def create_city():
                 """,
                 (new_city["latitude"], new_city["longitude"], new_city["name"], new_city.get("population"))
             )
+            # L'ID est renvoyé directement par PostgreSQL grâce à RETURNING id_city
             new_city_id = cursor.fetchone()[0]
             conn.commit()
 
@@ -73,7 +74,7 @@ def create_city():
     except Exception as e:
         print("Erreur lors de la création de la ville :", e)
         return jsonify({"error": "An error occurred"}), 500
-    
+
 # Route PUT pour modifier une ville existante
 @city_controller.route('/city/<int:city_id>', methods=['PUT'])
 def update_city(city_id):
@@ -121,13 +122,13 @@ def update_city(city_id):
         return jsonify({"error": "An error occurred"}), 500
 
 # Route DELETE pour supprimer une ville
-@city_controller.route('/city/<int:city_id>', methods=['DELETE'])
-def delete_city(city_id):
+@city_controller.route('/city/<int:id_city>', methods=['DELETE'])
+def delete_city(id_city):
     try:
         with DBConnection() as conn:
             cursor = conn.cursor()
             # Supprimer la ville en fonction de l'ID
-            cursor.execute("DELETE FROM city WHERE id_city = %s RETURNING id_city", (city_id,))
+            cursor.execute("DELETE FROM city WHERE id_city = %s RETURNING id_city", (id_city,))
             deleted_city = cursor.fetchone()
 
             if not deleted_city:
@@ -135,7 +136,7 @@ def delete_city(city_id):
 
             conn.commit()
 
-        return jsonify({"message": f"City with ID {city_id} has been deleted successfully"}), 200
+        return jsonify({"message": f"City with ID {id_city} has been deleted successfully"}), 200
 
     except Exception as e:
         print("Erreur lors de la suppression de la ville :", e)
