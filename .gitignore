@@ -1,0 +1,51 @@
+# Cache Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Fichiers générés par pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtualenv
+env/
+venv/
+ENV/
+.venv/
+.virtualenv/
+
+# Configuration locale de l'IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+*.out
+*.err
+
+# SQLite (fichiers de base de données locale pour le développement)
+*.sqlite3
+instance/
+
+# Fichiers de test ou de développement
+.coverage
+pytest_cache/
+htmlcov/
+
+# Clés ou données sensibles
+*.pem
+.env
+.env.*
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# Fichiers temporaires
+*.swp
+*.swo
+*.bak
+.DS_Store
+Thumbs.db
