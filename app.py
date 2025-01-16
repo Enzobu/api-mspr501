@@ -30,10 +30,10 @@ blueprints = [
     statementController.statement_controller,
     regionController.region_controller,
     cityController.city_controller,
-    placeStatementController.placeStatement_controller,
+    placeStatementController.place_statement_controller,
     continentController.continent_controller,
     climatTypeController.climat_type_controller,
-    weatherReportController.weatherReport_controller
+    weatherReportController.weather_report_controller
 ]
 
 # Enregistrer tous les Blueprints
