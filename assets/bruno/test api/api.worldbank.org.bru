@@ -1,0 +1,15 @@
+meta {
+  name: api.worldbank.org
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json
+  body: none
+  auth: none
+}
+
+params:query {
+  format: json
+}
